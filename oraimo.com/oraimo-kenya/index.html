@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Oraimo Kenya - Official Online Store for Smart Accessories" />
+    <meta name="theme-color" content="#95e427" />
+
+    <!-- Preload critical assets -->
+    <link rel="preload" href="https://ext.same-assets.com/131099195/52350043.png" as="image" />
+    <link rel="preload" href="https://ext.same-assets.com/131099195/3942025084.svg" as="image" />
+
+    <!-- Specify DNS prefetch for external resources -->
+    <link rel="dns-prefetch" href="//ext.same-assets.com" />
+    <link rel="dns-prefetch" href="//cdn-img.oraimo.com" />
+    <link rel="dns-prefetch" href="//same-app.com" />
+
+    <!-- Preconnect to critical domains -->
+    <link rel="preconnect" href="https://ext.same-assets.com" crossorigin />
+    <link rel="preconnect" href="https://cdn-img.oraimo.com" crossorigin />
+    <link rel="preconnect" href="https://same-app.com" crossorigin />
+
+    <!-- Add HTTP/2 server push hints for CDN domains -->
+    <link rel="preload" as="fetch" href="https://ext.same-assets.com" crossorigin />
+    <link rel="preload" as="fetch" href="https://cdn-img.oraimo.com" crossorigin />
+
+    <!-- Font optimization -->
+    <link rel="preload" href="/fonts/inter-var.woff2" as="font" type="font/woff2" crossorigin />
+
+    <!-- For WebP support detection -->
+    <script>
+      // Check for WebP support and add a class to html element
+      function checkWebpSupport() {
+        const canvas = document.createElement('canvas');
+        if (canvas.getContext && canvas.getContext('2d')) {
+          const webpSupported = canvas.toDataURL('image/webp').indexOf('data:image/webp') === 0;
+          if (webpSupported) {
+            document.documentElement.classList.add('webp');
+          } else {
+            document.documentElement.classList.add('no-webp');
+          }
+        }
+      }
+      // Run the check immediately
+      checkWebpSupport();
+    </script>
+
+    <!-- PWA manifest -->
+    <link rel="manifest" href="/manifest.json" />
+
+    <title>oraimo Kenya - Official Online Store</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+
+    <!-- Offline notification script -->
+    <script>
+      window.addEventListener('offline', function() {
+        if (!document.getElementById('offline-notification')) {
+          const offlineDiv = document.createElement('div');
+          offlineDiv.id = 'offline-notification';
+          offlineDiv.style.position = 'fixed';
+          offlineDiv.style.bottom = '10px';
+          offlineDiv.style.left = '10px';
+          offlineDiv.style.backgroundColor = '#b04040';
+          offlineDiv.style.color = 'white';
+          offlineDiv.style.padding = '10px';
+          offlineDiv.style.borderRadius = '5px';
+          offlineDiv.style.zIndex = '9999';
+          offlineDiv.textContent = 'You are offline. Some content may not be available.';
+          document.body.appendChild(offlineDiv);
+        }
+      });
+
+      window.addEventListener('online', function() {
+        const offlineDiv = document.getElementById('offline-notification');
+        if (offlineDiv) {
+          offlineDiv.remove();
+        }
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,16 @@
+[build]
+  command = "bun run build"
+  publish = "dist"
+
+# For a SPA using react-router
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+[images]
+  remote_images = [
+    "https://ext.same-assets.com/131099195/*",
+    "https://ext.same-assets.com/1325134528/*",
+    "https://cdn-img.oraimo.com/*"
+  ]
